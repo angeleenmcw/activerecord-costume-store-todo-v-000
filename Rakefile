@@ -1,5 +1,5 @@
-require_relative 'config/environment.rb'
-require "sinatra/activerecord/rake"
+require 'active_record'
+include ActiveRecord::Tasks
 
 namespace :db do
 
@@ -19,7 +19,7 @@ namespace :db do
     File.delete(connection_details.fetch('database')) if File.exist?(connection_details.fetch('database'))
   end
 
-  desc "start console"
+  desc "drop into the Pry console"
   task :console do
     Pry.start
   end
